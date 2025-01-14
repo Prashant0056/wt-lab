@@ -1,0 +1,56 @@
+.container {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.container:hover{
+    background-color: rgb(233, 233, 252);
+}
+
+.ordered-list-heading{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.unordered-list-heading{
+    list-style: lower-alpha;
+}
+
+table, td,  thead
+{
+    border: 1px solid;
+    padding: 5px;
+    border-collapse: collapse;
+}
+
+tr{
+    text-align: center;
+    border: 2px solid;
+}
+
+th{
+    border:3px solid;
+}
+
+.break{
+    background-color: aqua;
+}
+
+td{
+    border-left: 3px solid;
+    border-right: 3px solid;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+.anchor-list {
+    display: flex;
+    align-items: center;
+}
