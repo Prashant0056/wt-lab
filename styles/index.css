@@ -54,3 +54,12 @@ img {
     display: flex;
     align-items: center;
 }
+
+.sub-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;;
+}

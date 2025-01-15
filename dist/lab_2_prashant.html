@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/lab_2.css">
+    <title>Prashant Rai</title>
+</head>
+
+<body>
+    <h1>HTML forms:</h1>
+    <form action="" onsubmit="submitHandler(event)" id="user-form">
+        <div class="container form-container">
+            <label for="email">E-mail:</label>
+            <input type="text" name="email">
+
+            <label for="username">Username:</label>
+            <input type="text" name="username">
+
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+
+            <!-- Radiobutton -->
+
+            <div class="sub-container">
+                <div id="radio-gender">
+                    <label for="gender">Gender: </label>
+                    <input type="radio" name="gender" id="radio-male">Male
+                    <input type="radio" name="gender" id="radio-female">Female
+                    <input type="radio" name="gender" id="radio-others">Others
+                </div>
+
+                <!-- Checkbox -->
+                <div>
+                    <label for="Checkbox">Hobbies:</label>
+                    <input type="checkbox" name="Hobbies" id="checkbox-playing">Playing
+                    <input type="checkbox" name="Hobbies" id="checkbox-eating">Eating
+                    <input type="checkbox" name="Hobbies" id="checkbox-sleeping">Sleeping
+                    <input type="checkbox" name="Hobbies" id="checkbox-repeating">Repeating
+                </div>
+
+                <!-- Select option -->
+                <div>
+                    <label for="country">Country:</label>
+                    <select name="country" id="select-country">
+                        <option value="Nepal">Nepal</option>
+                        <option value="India">India</option>
+                        <option value="China">China</option>
+                        <option value="International">International</option>
+                    </select>
+                </div>
+
+                <!-- Textarea -->
+                <div>
+                    <label for="description"></label>
+                    <textarea name="description" id="textarea-description" rows="10"></textarea>
+                </div>
+
+                <div>
+                    <label for="file-input">Upload CV:</label>
+                    <input type="file" name="file-input" id="file">
+                </div>
+
+            </div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function submitHandler(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const email = formData.get('email');
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            const genderElement = document.getElementById("radio-gender");
+
+            console.log(JSON.stringify(genderElement))
+            const gender = genderElement ? genderElement.value : '';
+
+
+            const hobbies = [];
+            document.querySelectorAll('input[name="Hobbies"]:checked').forEach((checkbox) => {
+                hobbies.push(checkbox.value);
+            });
+
+            const country = formData.get('country');
+
+            const description = formData.get('description');
+
+            const file = formData.get('file-input');
+
+            const formDetails = `
+        Email: ${email}\n
+        Username: ${username}\n
+        Password: ${password}\n
+        Gender: ${gender}\n
+        Hobbies: ${hobbies.join(', ')}\n
+        Country: ${country}\n
+        Description: ${description}\n
+        File: ${file ? file.name : 'No file uploaded'}
+    `;
+
+            alert('Form submitted! Details:\n' + formDetails);
+        }
+
+    </script>
+
+
+</body>
+
+</html>
