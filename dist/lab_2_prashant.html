@@ -79,16 +79,15 @@
             const username = formData.get('username');
             const password = formData.get('password');
 
-            const genderElement = document.getElementById("radio-gender");
+            const selectedGender = document.querySelector('input[name="gender"]:checked');
+            const gender = selectedGender ? selectedGender.id.replace('radio-', '') : null;
 
-            console.log(JSON.stringify(genderElement))
-            const gender = genderElement ? genderElement.value : '';
-
-
-            const hobbies = [];
+            const checkedHobbies = [];
             document.querySelectorAll('input[name="Hobbies"]:checked').forEach((checkbox) => {
-                hobbies.push(checkbox.value);
+                checkedHobbies.push(checkbox.id.replace('checkbox-', ''));
             });
+
+            const hobbies = checkedHobbies.length > 0 ? checkedHobbies : null;
 
             const country = formData.get('country');
 
